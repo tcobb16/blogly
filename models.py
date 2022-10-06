@@ -2,6 +2,7 @@
 
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -34,7 +35,7 @@ class Post(db.Model):
 
     content = db.Column(db.Text, nullible=False, unique=False)
 
-    created_at = db.Column(db.DateTime, nullible=False, unique=False)
+    created_at = db.Column(db.DateTime, nullible=False, default=datetime.datetime.now,unique=False)
 
     user = db.relationship('User')
 
